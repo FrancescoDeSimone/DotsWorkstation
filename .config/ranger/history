@@ -1,0 +1,11 @@
+open_with rm -r
+open_with rm
+open_with rmdir
+alias
+mv %f ..
+
+shel
+open_with 
+rename SOiL
+search linux
+delete

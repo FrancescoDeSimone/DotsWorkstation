@@ -1,0 +1,33 @@
+/*
+#i3 folder
+!/.config
+/.config/*
+!/.config/i3
+/.config/i3/wallpaper.png
+/.config/i3/sfondo.jpg
+
+#polybar folder
+!/.config/polybar
+
+#ranger folder
+!/.config/ranger
+
+#dunst 
+!/.config/dunst
+
+#this file
+!*.vimrc
+!*.zprofile
+!*.zshrc
+!*.Xresources
+!.fonts
+!.script
+!*.fehbg
+!*.xinitrc
+!.gitignore
+!README.md
+!.screenlayout
+#wallpaper
+!Immagini
+/Immagini/*
+!Immagini/wallpaper
