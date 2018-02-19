@@ -1,8 +1,45 @@
 [colors]
 accent = #fba922
 
+[bar/top]
+enable-ipc = true
+monitor = DVI-I-1 
+width = 100%
+height = 15
+
+;background = #222
+background = #1f1f1f
+foreground = #eee
+
+border-bottom = 1
+border-bottom-color = #333
+
+overline-size = 10
+overline-color = ${self.background}
+underline-size = 10
+underline-color = ${self.background}
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 3
+module-margin-right = 3
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;2
+font-2 = Termsynu:size=8;0
+font-3 = Siji:pixelsize=10;1
+font-4 = FontAwesome:size=10;0
+
+modules-left = powermenu mpd
+modules-center = xwindow
+modules-right = volume wired-network clock
+
+wm-restack = i3 
+
+tray-position = right
+
 [bar/bottom]
-monitor = HDMI-0
+monitor = DVI-I-1
 bottom = true
 width = 100%
 height = 25 
@@ -37,61 +74,55 @@ font-5 = Termsynu:size=7;0
 
 modules-left = i3
 ;modules-center =
-modules-right = fs-root cpu memory volume clock
+modules-right = cpu memory clock
+;modules-right = memory
 
 wm-restack = i3 
+
 
 [bar/external]
-monitor = DVI-I-1 
+enable-ipc = true
+monitor = VGA-1-1
 bottom = true
-width = 100%
-height = 25 
+;dock = true
+width = ${bar/bottom.width}
+height = ${bar/bottom.height}
 
-background = #1c1c1c
-foreground = #eefafafa
+background = ${bar/bottom.background}
+foreground = ${bar/bottom.foreground}
 
-overline-size = 3
-overline-color = ${colors.accent}
-underline-size = 3
-underline-color = ${colors.accent}
+underline-size = ${bar/bottom.underline-size}
+underline-color = ${bar/bottom.underline-color}
+overline-size = ${bar/bottom.overline-size}
+overline-color = ${bar/bottom.overline-color}
 
-;border-color = #ff0000
-border-top = 3
-border-top-color = #3d3d3d
-;border-bottom = 0
-;border-bottom-color = #333333
+border-bottom.= ${bar/bottom.border-bottom}
+border-bottom.color = ${bar/bottom.border-bottom-color}
 
-spacing = 3
-;padding-right = 4
-padding-left = 0
-padding-right = 0
+spacing = ${bar/bottom.spacing}
+padding-left = ${bar/bottom.padding-left}
+padding-right = ${bar/bottom.padding-right}
 module-margin-left = 0
-module-margin-right = 6
+module-margin-right = ${bar/bottom.module-margin-right}
 
-font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=5;0
-font-2 = FontAwesome:size=8;0
-font-3 = NotoSans-Regular:size=8;-1
-font-4 = Unifont:size=5;0
-font-5 = Termsynu:size=7;0
+font-0 = ${bar/bottom.font-0}
+font-1 = ${bar/bottom.font-1}
+font-2 = ${bar/bottom.font-2}
+font-3 = ${bar/bottom.font-3}
+font-4 = ${bar/bottom.font-4}
+font-5 = ${bar/bottom.font-5}
 
 modules-left = i3
-modules-right = fs-home cpu memory volume clock
+modules-center = xwindow
+modules-right = fs-root clock
 
-wm-restack = i3 
-
-
-[module/fs-home]
-type = internal/fs
-mount-0 = /home
-label-mounted = %{F#e60053}%percentage_used%%%{F-}   used of home
-
+wm-restack = ${bar/bottom.wm-restack}
 
 
 [module/fs-root]
 type = internal/fs
 mount-0 = /
-label-mounted = %{F#e60053}%percentage_used%%%{F-}   used of root
+label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
 
 [module/i3]
 type = internal/i3
@@ -239,6 +270,7 @@ bar-progress-empty-foreground = #44
 type = internal/date
 interval = 5
 format-padding = 5
+format-background = #000
 format-foreground = #fff
 date = %%{F#bb}%Y-%m-%d%%{F-}  %%{F#ee}%H:%M%%{F-}
 
@@ -268,3 +300,44 @@ ramp-headphones-0 = 
 ramp-headphones-1 = 
 ramp-headphones-foreground = #9f78e1
 
+[module/xwindow]
+type = internal/xwindow
+label-maxlen = 75
+label-foreground = #bbb
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 3
+format-background = #000
+format-foreground = #fff
+
+label-open = 
+label-close = 
+label-separator = " - "
+
+menu-0-0 = Terminate WM
+menu-0-0-foreground = ${colors.accent}
+menu-0-0-exec = bspc quit -1
+menu-0-1 = Reboot
+menu-0-1-foreground = ${colors.accent}
+menu-0-1-exec = menu-open-1
+menu-0-2 = Power off
+menu-0-2-foreground = ${colors.accent}
+menu-0-2-exec = menu-open-2
+
+menu-1-0 = Cancel
+menu-1-0-foreground = ${colors.accent}
+menu-1-0-exec = menu-open-0
+menu-1-1 = Reboot
+menu-1-1-foreground = ${colors.accent}
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = Power off
+menu-2-0-foreground = ${colors.accent}
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-foreground = ${colors.accent}
+menu-2-1-exec = menu-open-0
+
+; vim:ft=dosini

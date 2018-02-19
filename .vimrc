@@ -25,7 +25,4 @@ set visualbell
 set t_vb=
 syntax on
 
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
 

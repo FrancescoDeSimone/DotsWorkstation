@@ -12,6 +12,9 @@
 #ranger folder
 !/.config/ranger
 
+#termite
+!/.config/termite
+
 #dunst 
 !/.config/dunst
 

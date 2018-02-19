@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+   export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -88,3 +88,5 @@ alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
 alias i3lock="~/.config/i3/lock.sh -s -g -b -p -d /tmp"
 alias dd="dd status=progress"
+alias aringa="curl -F \"aringa=<-\" arin.ga"
+

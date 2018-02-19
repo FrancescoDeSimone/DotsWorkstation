@@ -5,7 +5,8 @@ alias
 mv %f ..
 
 shel
-open_with 
 rename SOiL
 search linux
+q!
 delete
+open_with 
